@@ -3,7 +3,7 @@ Type: Package
 Title: ESDB Read Me Template for USAID Data Services
 Version: 0.1.0
 Author: Anna R. Eckenrode
-Maintainer: aeckenrode@usaid.gov
+Maintainer: Anna <aeckenrode@usaid.gov>
 Description: A template for analysts updating sources in the Economic and Social Database (ESDB)
     for USAID. Analysts can fill out relevant fields and run checks.
 License: Email for permission
