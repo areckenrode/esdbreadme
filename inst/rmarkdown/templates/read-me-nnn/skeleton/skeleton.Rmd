@@ -3,7 +3,7 @@ title: "Organization Name, Dataset Name (NNN)"
 author: "First Analyst Name"
 output:
   html_document:
-    theme: spacelab
+    theme: cerulean
   word_document:
     keep_md: true
     reference_docx: fac_style.docx
@@ -17,10 +17,27 @@ knitr::opts_chunk$set(echo = TRUE)
 **Frequency source publishes:** Annual/Bi-annual/Monthly/Quaterly/Continuous  <br>
 **Frequency updated in ESDB:** Annual/Bi-annual/Monthly/Quaterly  <br>
 
+### BACKGROUND INFORMATION
+
+**UPDATE HIGHLIGHTS **
+(What's new, interesting, and relevant? – methodology, data, series, etc)
+
+-	Here's some text. <br>
+-	Here's some text. <br>
+-	Here's some text. <br>
+-	Here's some text. <br>
+-	TWEET: Here's some text.
+
+**Background and other information to help better understand the data: **
+
+Here's a description of the methodology.  It can go here.  Also let's talk about any changes they made and what the data actually is. 
+
 **Archiving instructions:**
+
 [Archive all files | Archive some files; which are archived, kept]
 
 **Type of update:** [Complete replacement | Append year(s) | Hybrid | Correction]:  
+
 - if correction, what is the nature of the correction?
 
 **Is there anything unique or special about how we process, store, or present the data? **
@@ -28,77 +45,103 @@ knitr::opts_chunk$set(echo = TRUE)
 
 **Reason for including this source in the ESDB:  **
 
+Some reason goes here.  Maybe it was needed for the compendium.
 
 **Were procedures or programming changed significantly from last time? if so, why?**
-[change in raw data structure | series change | number of files changed | etc.]  
+[change in raw data structure | series change | number of files changed | etc.] 
 
 **Did we download all the published data? **
 [e.g., select 70 out of more than 100 series]
 
 **Is all the data we downloaded available for online query on IDEA?**
-[e.g., source download included regions, which we did not post | we download and process but don’t post, so querying is only possible by contacting Data Services | etc.]
+[e.g., source download included regions, which we did not post | we download and process but don't post, so querying is only possible by contacting Data Services | etc.]
 
 **Did the source back-date (revise) data?**
 
+**URL or other document that announced the release:**
 
-**URL or other document that announced the release: * *
-[e.g., http://www.fao.org/worldfoodsituation/wfs-home/foodpricesindex/en/]
+[Food Proce Index homepage](http://www.fao.org/worldfoodsituation/wfs-home/foodpricesindex/en/)
 
 **URL of the data file(s) (not a referring page) or data title if not downloaded (if not available, link to where you can check for new data): ** 
 [e.g., dynamic link | http://typo3.fao.org/fileadmin/templates/worldfood/Reports_and_docs/Food_price_indices_data.xls | September CD-ROM | etc.]
 
 
-#ACQUISITION AND PRE-PROCESSING
+### ACQUISITION AND PRE-PROCESSING
 
 **Instructions for the pre-update check per step three in the First Analyst Procedures document:**
-•	In the <S:\ESDB\Sources\~First Analyst Resources> folder, run the SAS program called <Pre-Update- Find series used in EADS applications>. You’ll need to change the source ID at the top of the program, but then just hit run.
-•	This will output an Excel file to the source Documentation folder with information on the series from the source that are used in the application. When processing data from the source, be sure to track those series and alert those responsible for each application if a series they need is dropped.
+
+- In the `S:\ESDB\Sources\~First Analyst Resources` folder, run the SAS program called `Pre-Update- Find series used in EADS applications`. You'll need to change the source ID at the top of the program, but then just hit run. <br>
+- This will output an Excel file to the source Documentation folder with information on the series from the source that are used in the application. When processing data from the source, be sure to track those series and alert those responsible for each application if a series they need is dropped.
+
+**Related products: **
+
+- do programs need to be run to update any products? <br>
+- country Dashboard? <br>
+- Self-Reliance probably <br>
 
 **Instructions for acquiring the data:**
-[Instructions for acquiring the data should include guidance from the organization’s homepage (in case direct links don’t work later]
-  
+[Instructions for acquiring the data should include guidance from the organization's homepage (in case direct links don't work later]
+
 1.	at URL, click on…
-a.	[screenshot with annotations if necessary]
+  -	[screenshot with annotations if necessary]
 2.	etc.
 
-**Data pre-processing instructions (if applicable): * *
+**Data pre-processing instructions (if applicable): **
 [Pre-processing should be minimal. If the pre-processing steps can be done in the program then they should be.]
+
 1.	Unmerge cells...
-a.	[screenshot with annotations if necessary]
+  -	[screenshot with annotations if necessary]
 2.	etc.
 
-**Folder(s) from which SAS programs read data (except /mappings/): * * 
+**Folder(s) from which SAS programs read data (except /mappings/): ** 
 [e.g., /raw data/  |  other] 
 
-**List of mapping files and respective mapped columns: * *
-mapping series.xlsx – original column -->  series_id
-mapping countries.xlsx – original column --> country_id
+**List of mapping files and respective mapped columns: **
+
+mapping series.xlsx – `original column` -->  `series_id` <br>
+mapping countries.xlsx – `original column` --> `country_id`<br>
 etc.
 
-#PROCESSING
+### PROCESSING
 
-**Processing instructions: * *
-1.	Run EG <XXX imports> to create a SAS dataset from the Excel data sets. [First Analyst Procedures step 6]
-a.	You need to import XXX data files, XXX mapping, XXX series.
-2.	Run the <194fix> program to convert the data into ESDB format.  [First Analyst Procedures step 9]
-a.	Export the <check means.xlxs> file and compare it to the raw data.  Save a copy in the \Documentation\ folder.  The SAS macros should export this file for you.  [First Analyst Procedures step 9]
-b.	Pause the fix program to update the mapping files as needed. Reimport via EG. [First Analyst Procedures step 7]
-c.	Pause the fix program to update the series and subsector series files as needed. Reimport via EG. [First Analyst Procedures step 7]
-3.	Run the standard first analyst checks [First Analyst Procedures step 10]
-4.	Fill out the ‘ESDB Source Update’ Google Form [First Analyst Procedures step 13]
-5.	Update the source licensing information [First Analyst Procedures step 14]
-6.	Update planner [First Analyst Procedures step 15]
+**Processing instructions: **
 
-#RELATED PRODUCTS AND BACKGROUND INFORMATION
+1. Run the `NNN fix` program to convert the data into ESDB format.
+  - Go to the fix program now!
+  - Or maybe we embed it here, but prevent nay of the code from printing in the rmarkdown doc.
+```{r include = FALSE}
+# Maybe put the actual fix program within this document?
+x <- 10
+df <- c("Hello", "Example", "Invisible")
+```
+  
+2. Run EG `NNN imports` to create a SAS dataset from the Excel data sets.
+  -	You need to import NNN data files, NNN mapping, NNN series.
+  
+3.	Run the standard first analyst checks.
+  - These will likely be here eventually.
+  
+4.	Fill out the `ESDB Source Update` Google Form
+  - We figure out a way to populate it from here.
+  
+5.	Update the source licensing information
+  - JK that's alost populated from here
+  
+6.	Update planner
+  - throw it in the trash; use Monday or GitHub or GitHub connected to Monday
+  
+### CHECKS
 
-**Related products: * *
-- do programs need to be run to update any products?
+```{r include = FALSE}
+#Set your drive and folder name
+drive <- "C:"
+source_name <- "The Exact Name of the Folder for the File Path to Work"
 
-**UPDATE HIGHLIGHTS **
-(What’s new, interesting, and relevant? – methodology, data, series, etc)
-•	
+```
 
-
-**Background and other information to help better understand the data: * *
-
+#### Check 1: What's the min and max year of data?
+```{r echo = FALSE}
+max_year <- 2020
+max_year
+```
 
