@@ -25,7 +25,6 @@ source_name <- "### Source Name"
 **Frequency updated in ESDB:** Annual/Bi-annual/Monthly/Quaterly  <br>
 
 ### BACKGROUND INFORMATION
-hello
 
 **UPDATE HIGHLIGHTS **
 (What's new, interesting, and relevant? – methodology, data, series, etc)
@@ -41,6 +40,7 @@ hello
 Here's a description of the methodology.  It can go here.  Also let's talk about any changes they made and what the data actually is. 
 
 **Who is our POC for this source?:**
+
 Name - email
 
 **Archiving instructions:**
@@ -74,23 +74,19 @@ Name - email
 
 
 ### ACQUISITION AND PRE-PROCESSING
-
-**Instructions for the pre-update check per step three in the First Analyst Procedures document:**
-
-- In the `S:\ESDB\Sources\~First Analyst Resources` folder, run the SAS program called `Pre-Update- Find series used in EADS applications`. You'll need to change the source ID at the top of the program, but then just hit run. <br>
-- This will output an Excel file to the source Documentation folder with information on the series from the source that are used in the application. When processing data from the source, be sure to track those series and alert those responsible for each application if a series they need is dropped.
-
-**Related products: **
 ```{r include = FALSE}
 source("S:\\ESDB\\Sources\\~First Analyst Resources\\FAC Test\\initiate.R")
-
-product
 ```
 
+**Instructions for the pre-update check:**
 
-- do programs need to be run to update any products? <br>
-- country Dashboard? <br>
-- Self-Reliance probably <br>
+- In the `initiate.R` program will call the `pre_update.R` program. Make sure the source name you defined at the top of this document matches the folder name exaclty or the program won't work. <br>
+- This will output a CSV file to the source Documentation folder with information on the series from the source that are used in the application. When processing data from the source, be sure to track those series and alert those responsible for each application if a series they need is dropped. <br>
+- An abbreviated list of products are listed here:
+```{r echo = FALSE}
+kable(product)
+```
+
 
 **Instructions for acquiring the data:**
 [Instructions for acquiring the data should include guidance from the organization's homepage (in case direct links don't work later]
