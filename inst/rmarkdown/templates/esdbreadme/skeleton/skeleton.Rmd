@@ -12,6 +12,13 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+```{r include = FALSE}
+drive <- "S:\\"
+source_name <- "### Source Name"
+# needs to match the folder name
+
+```
 **Date of Update:** MM/DD/YYYY  <br>
 **Next update:**MM/DD/YYYY  <br>
 **Frequency source publishes:** Annual/Bi-annual/Monthly/Quaterly/Continuous  <br>
@@ -33,6 +40,9 @@ hello
 
 Here's a description of the methodology.  It can go here.  Also let's talk about any changes they made and what the data actually is. 
 
+**Who is our POC for this source?:**
+Name - email
+
 **Archiving instructions:**
 
 [Archive all files | Archive some files; which are archived, kept]
@@ -43,10 +53,6 @@ Here's a description of the methodology.  It can go here.  Also let's talk about
 
 **Is there anything unique or special about how we process, store, or present the data? **
 [e.g., we calculate aggregate scores | the final dataset is moved, not copied, to database | etc.]
-
-**Reason for including this source in the ESDB:  **
-
-Some reason goes here.  Maybe it was needed for the compendium.
 
 **Were procedures or programming changed significantly from last time? if so, why?**
 [change in raw data structure | series change | number of files changed | etc.] 
@@ -75,6 +81,12 @@ Some reason goes here.  Maybe it was needed for the compendium.
 - This will output an Excel file to the source Documentation folder with information on the series from the source that are used in the application. When processing data from the source, be sure to track those series and alert those responsible for each application if a series they need is dropped.
 
 **Related products: **
+```{r include = FALSE}
+source("S:\\ESDB\\Sources\\~First Analyst Resources\\FAC Test\\initiate.R")
+
+product
+```
+
 
 - do programs need to be run to update any products? <br>
 - country Dashboard? <br>
@@ -94,22 +106,14 @@ Some reason goes here.  Maybe it was needed for the compendium.
   -	[screenshot with annotations if necessary]
 2.	etc.
 
-**Folder(s) from which SAS programs read data (except /mappings/): ** 
-[e.g., /raw data/  |  other] 
-
-**List of mapping files and respective mapped columns: **
-
-mapping series.xlsx – `original column` -->  `series_id` <br>
-mapping countries.xlsx – `original column` --> `country_id`<br>
-etc.
 
 ### PROCESSING
 
 **Processing instructions: **
 
 1. Run the `NNN fix` program to convert the data into ESDB format.
-  - Go to the fix program now!
-  - Or maybe we embed it here, but prevent nay of the code from printing in the rmarkdown doc.
+      - Go to the fix program now!
+      - Or maybe we embed it here, but prevent nay of the code from printing in the rmarkdown doc.
 ```{r include = FALSE}
 # Maybe put the actual fix program within this document?
 x <- 10
@@ -117,19 +121,19 @@ df <- c("Hello", "Example", "Invisible")
 ```
   
 2. Run EG `NNN imports` to create a SAS dataset from the Excel data sets.
-  -	You need to import NNN data files, NNN mapping, NNN series.
+    -	You need to import NNN data files, NNN mapping, NNN series.
   
 3.	Run the standard first analyst checks.
-  - These will likely be here eventually.
+    - These will likely be here eventually.
   
 4.	Fill out the `ESDB Source Update` Google Form
-  - We figure out a way to populate it from here.
+    - We figure out a way to populate it from here.
   
 5.	Update the source licensing information
-  - JK that's alost populated from here
+    - JK that's alost populated from here
   
 6.	Update planner
-  - throw it in the trash; use Monday or GitHub or GitHub connected to Monday
+    - throw it in the trash; use Monday or GitHub or GitHub connected to Monday
   
 ### CHECKS
 
@@ -144,5 +148,43 @@ source_name <- "The Exact Name of the Folder for the File Path to Work"
 ```{r echo = FALSE}
 max_year <- 2020
 max_year
+```
+
+```{r include = FALSE}
+analyst_name <- "Name here"
+source_id <- "###"
+source_name <- "Another Name"
+sos <- "here we go"
+metadata <- cbind.data.frame(analyst_name, source_id, source_name, sos)
+
+```
+
+```{r include=FALSE}
+library(DT)
+library(shiny)
+library(shinyjs)
+library(dplyr)
+```
+
+
+```{r warnings=FALSE, echo=FALSE}
+shinyApp(
+  ui = fluidPage(
+    titlePanel("Mimicking a Google Form with a Shiny app"),
+    div(
+      id = "form",
+
+      textInput("name", "Analyst Name", ""),
+      textInput("source_name", "Source Name"),
+      checkboxInput("used_shiny", "I've built a Shiny app in R before", FALSE),
+      sliderInput("r_num_years", "Number of years using R", 0, 25, 2, ticks = FALSE),
+      selectInput("os_type", "Operating system used most frequently",
+                  c("",  "Windows", "Mac", "Linux")),
+      actionButton("submit", "Submit", class = "btn-primary")
+    )
+  ),
+  server = function(input, output, session) {
+  }
+)
 ```
 
