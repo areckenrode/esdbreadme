@@ -371,6 +371,7 @@ summary {
 <p><strong>Date of Update:</strong> MM/DD/YYYY <br> <strong>Next update:</strong>MM/DD/YYYY <br> <strong>Frequency source publishes:</strong> Annual/Bi-annual/Monthly/Quaterly/Continuous <br> <strong>Frequency updated in ESDB:</strong> Annual/Bi-annual/Monthly/Quaterly <br></p>
 <div id="background-information" class="section level3">
 <h3>BACKGROUND INFORMATION</h3>
+<p>hello</p>
 <p><strong>UPDATE HIGHLIGHTS </strong> (What’s new, interesting, and relevant? – methodology, data, series, etc)</p>
 <ul>
 <li>Here’s some text. <br></li>
@@ -381,6 +382,7 @@ summary {
 </ul>
 <p><strong>Background and other information to help better understand the data: </strong></p>
 <p>Here’s a description of the methodology. It can go here. Also let’s talk about any changes they made and what the data actually is.</p>
+<p><strong>Who is our POC for this source?:</strong> Name - email</p>
 <p><strong>Archiving instructions:</strong></p>
 <p>[Archive all files | Archive some files; which are archived, kept]</p>
 <p><strong>Type of update:</strong> [Complete replacement | Append year(s) | Hybrid | Correction]:</p>
@@ -388,8 +390,6 @@ summary {
 <li>if correction, what is the nature of the correction?</li>
 </ul>
 <p><strong>Is there anything unique or special about how we process, store, or present the data? </strong> [e.g., we calculate aggregate scores | the final dataset is moved, not copied, to database | etc.]</p>
-<p><strong>Reason for including this source in the ESDB: </strong></p>
-<p>Some reason goes here. Maybe it was needed for the compendium.</p>
 <p><strong>Were procedures or programming changed significantly from last time? if so, why?</strong> [change in raw data structure | series change | number of files changed | etc.]</p>
 <p><strong>Did we download all the published data? </strong> [e.g., select 70 out of more than 100 series]</p>
 <p><strong>Is all the data we downloaded available for online query on IDEA?</strong> [e.g., source download included regions, which we did not post | we download and process but don’t post, so querying is only possible by contacting Data Services | etc.]</p>
@@ -431,56 +431,46 @@ summary {
 <ol start="2" style="list-style-type: decimal">
 <li>etc.</li>
 </ol>
-<p><strong>Folder(s) from which SAS programs read data (except /mappings/): </strong> [e.g., /raw data/ | other]</p>
-<p><strong>List of mapping files and respective mapped columns: </strong></p>
-<p>mapping series.xlsx – <code>original column</code> –&gt; <code>series_id</code> <br> mapping countries.xlsx – <code>original column</code> –&gt; <code>country_id</code><br> etc.</p>
 </div>
 <div id="processing" class="section level3">
 <h3>PROCESSING</h3>
 <p><strong>Processing instructions: </strong></p>
 <ol style="list-style-type: decimal">
-<li>Run the <code>NNN fix</code> program to convert the data into ESDB format.</li>
-</ol>
+<li>Run the <code>NNN fix</code> program to convert the data into ESDB format.
 <ul>
 <li>Go to the fix program now!</li>
 <li>Or maybe we embed it here, but prevent nay of the code from printing in the rmarkdown doc.</li>
-</ul>
-<ol start="2" style="list-style-type: decimal">
-<li>Run EG <code>NNN imports</code> to create a SAS dataset from the Excel data sets.</li>
-</ol>
+</ul></li>
+<li>Run EG <code>NNN imports</code> to create a SAS dataset from the Excel data sets.
 <ul>
 <li>You need to import NNN data files, NNN mapping, NNN series.</li>
-</ul>
-<ol start="3" style="list-style-type: decimal">
-<li>Run the standard first analyst checks.</li>
-</ol>
+</ul></li>
+<li>Run the standard first analyst checks.
 <ul>
 <li>These will likely be here eventually.</li>
-</ul>
-<ol start="4" style="list-style-type: decimal">
-<li>Fill out the <code>ESDB Source Update</code> Google Form</li>
-</ol>
+</ul></li>
+<li>Fill out the <code>ESDB Source Update</code> Google Form
 <ul>
 <li>We figure out a way to populate it from here.</li>
-</ul>
-<ol start="5" style="list-style-type: decimal">
-<li>Update the source licensing information</li>
-</ol>
+</ul></li>
+<li>Update the source licensing information
 <ul>
 <li>JK that’s alost populated from here</li>
-</ul>
-<ol start="6" style="list-style-type: decimal">
-<li>Update planner</li>
-</ol>
+</ul></li>
+<li>Update planner
 <ul>
 <li>throw it in the trash; use Monday or GitHub or GitHub connected to Monday</li>
-</ul>
+</ul></li>
+</ol>
 </div>
 <div id="checks" class="section level3">
 <h3>CHECKS</h3>
 <div id="check-1-whats-the-min-and-max-year-of-data" class="section level4">
 <h4>Check 1: What’s the min and max year of data?</h4>
 <pre><code>## [1] 2020</code></pre>
+<pre><code>##   analyst_name source_id  source_name        sos
+## 1    Name here       ### Another Name here we go</code></pre>
+<div style="width: 100% ; height: 400px ; text-align: center; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box;" class="muted well">Shiny applications not supported in static R Markdown documents</div>
 </div>
 </div>
 
