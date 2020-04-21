@@ -1,6 +1,5 @@
 ---
 title: "Organization Name, Dataset Name (NNN)"
-author: "First Analyst Name"
 output:
   html_document:
     theme: cerulean
@@ -10,52 +9,94 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
+knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ```{r include = FALSE}
 drive <- "S:\\"
-source_name <- "### Source Name"
-# needs to match the folder name
-
+folder_name <- "### Source Name"   # needs to match the folder name
+analyst_name <- "Your Name Here"
 ```
-**Date of Update:** MM/DD/YYYY  <br>
-**Next update:**MM/DD/YYYY  <br>
-**Frequency source publishes:** Annual/Bi-annual/Monthly/Quaterly/Continuous  <br>
-**Frequency updated in ESDB:** Annual/Bi-annual/Monthly/Quaterly  <br>
-
-### BACKGROUND INFORMATION
-
-**UPDATE HIGHLIGHTS **
-(What's new, interesting, and relevant? – methodology, data, series, etc)
-
--	Here's some text. <br>
--	Here's some text. <br>
--	Here's some text. <br>
--	Here's some text. <br>
--	TWEET: Here's some text.
-
-**Background and other information to help better understand the data: **
-
-Here's a description of the methodology.  It can go here.  Also let's talk about any changes they made and what the data actually is. 
-
-**Who is our POC for this source?:**
-
-Name - email
-
+**When did you finish your update?**
+```{r}
+last_update <- "MM-DD-YYY"
+kable(last_update)
+```
 **Archiving instructions:**
 
 [Archive all files | Archive some files; which are archived, kept]
 
-**Type of update:** [Complete replacement | Append year(s) | Hybrid | Correction]:  
+### SOURCE BACKGROUND INFORMATION
 
-- if correction, what is the nature of the correction?
+**Background and other information to help better understand the data: **
+
+Add some instructions on how to fill this out better. Here's a description of the methodology.  <br>
+It can go here.  Also let's talk about any changes they made and what the data actually is. 
+
+**Why do we include this in the ESDB?**
+
+JS notes - what story the data is telling, why their index exists, development relevance,
+what the source is trying to measure, not methodology, not brief description of source,
+description of why this is relevant and how it fits in edsb and why we want this in our database
+ie. V-Dem is a huge repository or expert assessment of democracy in detailed topics - ish 
+why we're doing the thing
+
+**Does the source description still look accurate?**
+
+Get from sources file
+```{r}
+source_description <- "Description here pulled from sources file."
+kable(source_description)
+```
+
+**Did the source back-date (revise) data?**
+```{r}
+revise <- "Yes or No" 
+kable(revise)
+```
+
+
+**When was the data released, when did you update it, and when can we expect the next update?** 
+```{r}
+current_edition <- "MM-DD-YYY"
+
+next_edition <- "MM-DD-YYY"
+
+kable(cbind(current_edition, next_edition))
+```
+
+**How frequently does the source update data? How frequently do we update it for the ESDB?**
+```{r}
+frequency <- "Annual/Bi-annual/Monthly/Quaterly/Continuous"  # source frequency
+frequency_esdb <- "Annual/Bi-annual/Monthly/Quaterly/Continuous"
+
+kable(cbind(frequency, frequency_esdb))
+```
+
+**Who is our POC for this source?:**
+```{r echo=FALSE}
+poc <- "Name email@email.com"
+kable(poc)
+```
+**Is this link to Terms of Use correct?**
+
+Pull from sources file.
+
+**Is this citation correct?**
+
+Pull from sources file.
+
+**Confirm the date you checked the licensing information:**
+```{r}
+date_checked <- "MM-DD-YYY"
+```
+
+
+### UPDATE BACKGROUND INFORMATION
 
 **Is there anything unique or special about how we process, store, or present the data? **
 [e.g., we calculate aggregate scores | the final dataset is moved, not copied, to database | etc.]
-
-**Were procedures or programming changed significantly from last time? if so, why?**
-[change in raw data structure | series change | number of files changed | etc.] 
 
 **Did we download all the published data? **
 [e.g., select 70 out of more than 100 series]
@@ -63,19 +104,23 @@ Name - email
 **Is all the data we downloaded available for online query on IDEA?**
 [e.g., source download included regions, which we did not post | we download and process but don't post, so querying is only possible by contacting Data Services | etc.]
 
-**Did the source back-date (revise) data?**
+**what is the procurement method?**
+```{r}
+procurement_method <- "direct contact/ web extraction(download)/web extraction(API)/web extraction(scraping)/ESDB pull/purchase/subscription"
+file_format<- ".csv/Excel/PDF/Access Database/STATA .dta/SPSS/Text .txt/JSON"
+kable(cbind(procurement_method, file_format))
+```
 
-**URL or other document that announced the release:**
+**Type of update:** 
 
-[Food Proce Index homepage](http://www.fao.org/worldfoodsituation/wfs-home/foodpricesindex/en/)
+[Complete replacement | Append year(s) | Hybrid | Correction] if correction, what is the nature of the correction?
 
-**URL of the data file(s) (not a referring page) or data title if not downloaded (if not available, link to where you can check for new data): ** 
-[e.g., dynamic link | http://typo3.fao.org/fileadmin/templates/worldfood/Reports_and_docs/Food_price_indices_data.xls | September CD-ROM | etc.]
+
 
 
 ### ACQUISITION AND PRE-PROCESSING
 ```{r include = FALSE}
-source("S:\\ESDB\\Sources\\~First Analyst Resources\\FAC Test\\initiate.R")
+#source("S:\\ESDB\\Sources\\~First Analyst Resources\\FAC Test\\initiate.R")
 ```
 
 **Instructions for the pre-update check:**
@@ -84,7 +129,12 @@ source("S:\\ESDB\\Sources\\~First Analyst Resources\\FAC Test\\initiate.R")
 - This will output a CSV file to the source Documentation folder with information on the series from the source that are used in the application. When processing data from the source, be sure to track those series and alert those responsible for each application if a series they need is dropped. <br>
 - An abbreviated list of products are listed here:
 ```{r echo = FALSE}
-kable(product)
+#kable(product)
+```
+
+**URL or other document that has the data set:**  [Source dataset homepage](http://www.google.com)
+```{r}
+source_url <- "https://www.google.com"
 ```
 
 
@@ -108,52 +158,66 @@ kable(product)
 **Processing instructions: **
 
 1. Run the `NNN fix` program to convert the data into ESDB format.
-      - Go to the fix program now!
-      - Or maybe we embed it here, but prevent nay of the code from printing in the rmarkdown doc.
+      - we embed it here, but prevent any of the code from printing in the rmarkdown doc.
+      - still run and edit it iteratively as you 
 ```{r include = FALSE}
 # Maybe put the actual fix program within this document?
 x <- 10
 df <- c("Hello", "Example", "Invisible")
 ```
   
-2. Run EG `NNN imports` to create a SAS dataset from the Excel data sets.
-    -	You need to import NNN data files, NNN mapping, NNN series.
-  
+2. Prepare your metadata file. (This replaces licensing and source update form.) 
+
+What's the min and max year of data?
+```{r echo = FALSE}
+max_year <- max(source_data$year) #source_data defined in initiate
+min_year <- 1994 #min(source_data$year) #source_data defined in initiate
+
+kable(cbind(max_year, min_year))
+```
+
+
+```{r include = FALSE}
+source_id <- "NNN" #source_number #source_number defined in initiate using folder_number defined in this program UNCOMMENT AND USE VALUE SOURCE_NUMBER
+sos <- "here we go"
+metadata <- cbind.data.frame(analyst_name, source_id, source_name, source_url, max_year, min_year, sos)
+# write.csv(metadata, file_path from initiate)
+
+```
 3.	Run the standard first analyst checks.
     - These will likely be here eventually.
   
-4.	Fill out the `ESDB Source Update` Google Form
-    - We figure out a way to populate it from here.
-  
-5.	Update the source licensing information
-    - JK that's alost populated from here
-  
 6.	Update planner
     - throw it in the trash; use Monday or GitHub or GitHub connected to Monday
-  
-### CHECKS
+    
+### SUMMARY OF THE UPDATE NOW THAT YOU'RE DONE
 
-```{r include = FALSE}
-#Set your drive and folder name
-drive <- "C:"
-source_name <- "The Exact Name of the Folder for the File Path to Work"
+**What changed since last time?**
 
-```
+Will provide some specific questions and response options.
+- procedures [raw data structure | number of files | combined sources | etc.]
+- methodology
+- series/series file
+- other notes
+- check 4 discussion
 
-#### Check 1: What's the min and max year of data?
-```{r echo = FALSE}
-max_year <- 2020
-max_year
-```
+**Were procedures or programming changed significantly from last time? if so, why?**
+[change in raw data structure | series change | number of files changed | etc.] 
 
-```{r include = FALSE}
-analyst_name <- "Name here"
-source_id <- "###"
-source_name <- "Another Name"
-sos <- "here we go"
-metadata <- cbind.data.frame(analyst_name, source_id, source_name, sos)
+**UPDATE HIGHLIGHTS **
 
-```
+(What's new, interesting, and relevant? – methodology, data, series, etc)
+
+-	Here's some text. <br>
+-	Here's some text. <br>
+-	Here's some text. <br>
+-	Here's some text. <br>
+-	TWEET: Here's some text.
+
+
+
+
+
 
 ```{r include=FALSE}
 library(DT)
@@ -162,25 +226,25 @@ library(shinyjs)
 library(dplyr)
 ```
 
-
+ 
 ```{r warnings=FALSE, echo=FALSE}
-shinyApp(
-  ui = fluidPage(
-    titlePanel("Mimicking a Google Form with a Shiny app"),
-    div(
-      id = "form",
-
-      textInput("name", "Analyst Name", ""),
-      textInput("source_name", "Source Name"),
-      checkboxInput("used_shiny", "I've built a Shiny app in R before", FALSE),
-      sliderInput("r_num_years", "Number of years using R", 0, 25, 2, ticks = FALSE),
-      selectInput("os_type", "Operating system used most frequently",
-                  c("",  "Windows", "Mac", "Linux")),
-      actionButton("submit", "Submit", class = "btn-primary")
-    )
-  ),
-  server = function(input, output, session) {
-  }
-)
+# shinyApp(
+#   ui = fluidPage(
+#     titlePanel("Mimicking a Google Form with a Shiny app"),
+#     div(
+#       id = "form",
+# 
+#       textInput("name", "Analyst Name", ""),
+#       textInput("source_name", "Source Name"),
+#       checkboxInput("used_shiny", "I've built a Shiny app in R before", FALSE),
+#       sliderInput("r_num_years", "Number of years using R", 0, 25, 2, ticks = FALSE),
+#       selectInput("os_type", "Operating system used most frequently",
+#                   c("",  "Windows", "Mac", "Linux")),
+#       actionButton("submit", "Submit", class = "btn-primary")
+#     )
+#   ),
+#   server = function(input, output, session) {
+#   }
+# )
 ```
 
